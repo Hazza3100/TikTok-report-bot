@@ -3,6 +3,8 @@
 
 TikTok report bot
 
+Star for similar projects! 
+
 [+] Proxy Support
 
 
