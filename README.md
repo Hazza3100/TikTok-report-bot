@@ -3,7 +3,9 @@
 ## 10 stars for release
 
 
-TikTok report bot with proxy support
+TikTok report bot
+
+[+] Proxy Support
 
 
 
