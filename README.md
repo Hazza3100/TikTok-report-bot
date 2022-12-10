@@ -1,7 +1,5 @@
 # TikTok report bot
 
-## 10 stars for release
-
 
 TikTok report bot
 
