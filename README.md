@@ -1,6 +1,6 @@
 # TikTok report bot
 
-## 15 stars for auto id scraper
+## Pls star :)
 
 
 TikTok report bot
