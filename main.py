@@ -68,7 +68,6 @@ class TikTok:
 
 if __name__ == '__main__':
     os.system('cls')
-    # userId  = input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] User ID {Fore.CYAN}> {Fore.WHITE}")
     username  = input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Username {Fore.CYAN}> {Fore.WHITE}")
     threads   = int(input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Threads {Fore.CYAN}> {Fore.WHITE}"))
     proxy     = input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Use proxies (y/n) {Fore.CYAN}> {Fore.WHITE}")
@@ -86,5 +85,6 @@ if __name__ == '__main__':
         _proxy_ = None
         for i in range(threads):
             c = threading.Thread(target=TikTok().report, args=(userId, _proxy_,))
+            c.start()
             c.join()
         stats.tit = True
