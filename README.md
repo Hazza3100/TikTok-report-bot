@@ -10,7 +10,7 @@ Star for similar projects!
 [+] Proxy Support
 
 
-Proof below it actually works!
+Proof below it actually works! (Thx triple)
 ![Screenshot](reportProof.jpg)
 
 
