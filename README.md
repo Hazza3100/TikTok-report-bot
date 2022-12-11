@@ -9,7 +9,7 @@ Star for similar projects!
 
 [+] Proxy Support
 
-![Screenshot](proof.jpg)
+![Screenshot](reportProof.jpg)
 
 
 ![Screenshot](Capture.PNG)
