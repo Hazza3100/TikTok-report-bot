@@ -5,7 +5,11 @@ import threading
 
 from colorama import Fore
 
-reported = 0
+
+class stats:
+    reported = 0
+    error    = 0
+    tit      = False
 
 class TikTok:
     def __init__(self) -> None:
@@ -21,10 +25,13 @@ class TikTok:
         except:
             print(f"{Fore.BLUE}[ {Fore.RED}x {Fore.BLUE}]{Fore.RESET} Username Invalid")
 
+    def title(self):
+        while stats.tit == False:
+            os.system(f'title TikTok Reporter ^| Success: {stats.reported} ^| Errors: {stats.error}')
+
 
     def report(self, userId, _proxy_):
         try:
-            global reported
             with self.session as session:
                 reason          = random.randint(0, 12000)
                 fake_engagement = 9010
@@ -48,11 +55,13 @@ class TikTok:
                     proxies = {'http': f'http://{proxy}', 'https': f'http://{proxy}'}
                     response = session.get(f'https://www.tiktok.com/aweme/v1/aweme/feedback/?report_type=user&object_id={userId}&owner_id={userId}&reason={reason}', headers=headers, proxies=proxies)
                 if response.json()['status_msg'] == "Thanks for your feedback":
-                    reported += 1
-                    print(f"{Fore.BLUE}[ {Fore.GREEN}+ {Fore.BLUE}]{Fore.RESET} Reported [ {userId} ] ({reported})")
+                    stats.reported += 1
+                    print(f"{Fore.BLUE}[ {Fore.GREEN}+ {Fore.BLUE}]{Fore.RESET} Reported [ {userId} ] ({stats.reported})")
                 else:
+                    stats.error += 1
                     print(f"{Fore.BLUE}[ {Fore.RED}x {Fore.BLUE}]{Fore.RESET} Error")
         except:
+            stats.error += 1
             print(f"{Fore.BLUE}[ {Fore.RED}x {Fore.BLUE}]{Fore.RESET} Error")
 
 
@@ -64,12 +73,18 @@ if __name__ == '__main__':
     threads   = int(input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Threads {Fore.CYAN}> {Fore.WHITE}"))
     proxy     = input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Use proxies (y/n) {Fore.CYAN}> {Fore.WHITE}")
     userId    = TikTok().get_id(username)
-    
+    threading.Thread(target=TikTok().title).start()
     if proxy == "y":
         _proxy_ = "Use"
         for i in range(threads):
-            threading.Thread(target=TikTok().report, args=(userId, _proxy_)).start()
+            c = threading.Thread(target=TikTok().report, args=(userId, _proxy_))
+            c.start()
+        for i in range(threads):
+            c.join()
+        stats.tit = True
     else:
         _proxy_ = None
         for i in range(threads):
-            threading.Thread(target=TikTok().report, args=(userId, _proxy_,)).start()
+            c = threading.Thread(target=TikTok().report, args=(userId, _proxy_,))
+            c.join()
+        stats.tit = True
