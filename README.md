@@ -1,6 +1,6 @@
 # TikTok report bot
 
-## Pls star :)
+## If you download you should star 🤷‍♂️
 
 
 TikTok report bot
