@@ -58,4 +58,4 @@ if __name__ == '__main__':
     else:
         _proxy_ = None
         for i in range(threads):
-            threading.Thread(target=TikTok().report, args=(userId,)).start()
+            threading.Thread(target=TikTok().report, args=(userId, _proxy_,)).start()
