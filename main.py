@@ -3,6 +3,7 @@ import random
 import requests
 import threading
 
+from sys import platform
 from colorama import Fore
 
 
@@ -15,6 +16,16 @@ class TikTok:
     def __init__(self) -> None:
         self.session  = requests.Session()
 
+
+    def cls(self):
+        if platform == 'win32':
+            os.system('cls')
+        if platform == 'linux' or platform == 'linux2':
+            os.system('clear')
+        else:
+            os.system('clear')
+
+    
     def get_id(self, username):
         try:
             with self.session as session:
@@ -67,7 +78,7 @@ class TikTok:
 
 
 if __name__ == '__main__':
-    os.system('cls')
+    TikTok().cls()
     username  = input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Username {Fore.CYAN}> {Fore.WHITE}")
     threads   = int(input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Threads {Fore.CYAN}> {Fore.WHITE}"))
     proxy     = input(f"{Fore.GREEN}[{Fore.CYAN} ? {Fore.GREEN}] Use proxies (y/n) {Fore.CYAN}> {Fore.WHITE}")
