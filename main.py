@@ -23,7 +23,7 @@ class TikTok:
         if platform == 'linux' or platform == 'linux2':
             os.system('clear')
         else:
-            os.system('clear')
+            print('\n')
 
     
     def get_id(self, username):
